@@ -58,6 +58,10 @@ int main(int argc, char **argv) {
 	int w_height = LINES - 2 * DY;
 	int w_width = COLS - 2 * DX;
 	
+	WINDOW *frame = newwin(w_height + 2, w_width + 2, DY - 1, DX - 1);
+	box(frame, 0, 0);
+	wrefresh(frame);
+	
 	WINDOW *win = newwin(w_height, w_width, DY, DX);
 	keypad(win, TRUE);
 	scrollok(win, TRUE);
@@ -89,6 +93,7 @@ int main(int argc, char **argv) {
 	free(lines);
 	free(buffer);
 	delwin(win);
+	delwin(frame);
 	endwin();
 	return 0;
 }
