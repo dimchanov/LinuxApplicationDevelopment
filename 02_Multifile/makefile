@@ -1,7 +1,7 @@
 $(CC) = cc
-GENERATES = prog README prog-a liboutput_static.a
+GENERATES = prog README prog-a liboutput_static.a prog-so liboutput.so
 TRASH = *.o *~ o.*
-CFLAGS = -Wall
+CFLAGS = -Wall -fPIC
 
 all: README
 
@@ -18,6 +18,12 @@ liboutput_static.a: fun.o const.o
 
 prog-a: prog.o liboutput_static.a
 	$(CC) $(CFLAGS) $^ -o $@
+
+liboutput.so: fun.o const.o
+	$(CC) $(CFLAGS) -shared $^ -o $@
+
+prog-so: prog.o liboutput.so
+	$(CC) $(CFLAGS) -L. $^ -o $@
 
 README: prog
 	./$< 2> $@
