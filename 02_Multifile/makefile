@@ -28,10 +28,10 @@ prog-so: prog.o liboutput.so
 README: prog
 	./$< 2> $@
 
-clean:
+clean: genclean
 	rm -f $(TRASH)
 
-distclean: clean
+genclean:
 	rm -f $(GENERATES) 
 
 test: prog prog-a prog-so
