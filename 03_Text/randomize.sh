@@ -26,8 +26,15 @@ do
     ((lines_count++))
 done
 
+tput clear
 
+coords_perm=$(shuf -e ${char_coords[@]})
+while read line
+do
+    IFS=',' read row col c <<< $line
+    sleep $delay
+    tput cup $row $col
+    printf "$c"
+done <<< $coords_perm
 
-
-
-
+tput cup $lines_count 0
