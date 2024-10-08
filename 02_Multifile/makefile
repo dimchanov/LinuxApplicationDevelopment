@@ -1,4 +1,4 @@
-$(CC) = cc
+CC = cc
 GENERATES = prog README prog-a liboutput_static.a prog-so liboutput.so
 TRASH = *.o *~ o.* test* *test
 CFLAGS = -Wall -fPIC
