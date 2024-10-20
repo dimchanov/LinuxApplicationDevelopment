@@ -39,6 +39,45 @@ int main(int argc, char **argv) {
         last_group_idx = i;
     }
 
+    char backslash = 0;
+    int new_repl_len = strlen(repl);
+    int new_repl_pos = 0;
+    char *new_repl = (char *)malloc(new_repl_len * sizeof(char));
+    for (int i = 0; i < strlen(repl); ++i) {
+        // printf("new_repl %d: %s\n", i, new_repl);
+        if (repl[i] == '\\') {
+            if (backslash) {
+                new_repl[new_repl_pos] = '\\';
+                ++new_repl_pos;
+                backslash = 0;
+            } else {
+                backslash = 1;
+            }
+        } else {
+            if (backslash && isdigit(repl[i])) {
+                int bag_idx = repl[i] - '0';
+                if (bag_idx > last_group_idx) {
+                    // printf("There is no group with number %d\n", bag_idx);
+                    return 2;
+                }
+                int bag_len = bags[bag_idx].rm_eo - bags[bag_idx].rm_so;
+                new_repl_len += bag_len;
+                new_repl = realloc(new_repl, new_repl_len);
+                for (int j = 0; j < bag_len; ++j) {
+                    new_repl[new_repl_pos] = string[bags[bag_idx].rm_so + j];
+                    ++new_repl_pos;
+                }
+            } else {
+                new_repl[new_repl_pos] = repl[i];
+                ++new_repl_pos;
+            }
+            backslash = 0;
+        }
+    }
+    new_repl[new_repl_pos] = 0;
+    printf("new_repl: %s\n", new_repl);
+
+    free(new_repl);
     regfree(&regex);
     return 0;
 }
