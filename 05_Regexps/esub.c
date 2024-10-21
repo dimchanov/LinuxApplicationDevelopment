@@ -22,15 +22,17 @@ int main(int argc, char **argv) {
     int errcode;
     if ((errcode = regcomp(&regex, pattern, REG_EXTENDED))) {
         regerror(errcode, &regex, errbuffer, BUFFSIZE);
-        fprintf(stderr, "Error: %s\n", errbuffer);
-        return 1;
+        printf("Error: %s\n", errbuffer);
+        regfree(&regex);
+        return 0;
     }
 
     regmatch_t bags[MAXGR];
     if ((errcode = regexec(&regex, string, MAXGR, bags, 0))) {
         regerror(errcode, &regex, errbuffer, BUFFSIZE);
-        fprintf(stderr, "Error: %s\n", errbuffer);
-        return 1;
+        printf("Error: %s\n", errbuffer);
+        regfree(&regex);
+        return 0;
     }
 
     int last_group_idx = 0;
@@ -42,9 +44,8 @@ int main(int argc, char **argv) {
     char backslash = 0;
     int new_repl_len = strlen(repl);
     int new_repl_pos = 0;
-    char *new_repl = (char *)malloc(new_repl_len * sizeof(char));
+    char *new_repl = (char *)malloc((new_repl_len + 1) * sizeof(char));
     for (int i = 0; i < strlen(repl); ++i) {
-        // printf("new_repl %d: %s\n", i, new_repl);
         if (repl[i] == '\\') {
             if (backslash) {
                 new_repl[new_repl_pos] = '\\';
@@ -57,8 +58,10 @@ int main(int argc, char **argv) {
             if (backslash && isdigit(repl[i])) {
                 int bag_idx = repl[i] - '0';
                 if (bag_idx > last_group_idx) {
-                    // printf("There is no group with number %d\n", bag_idx);
-                    return 2;
+                    printf("There is no group with number %d\n", bag_idx);
+                    free(new_repl);
+                    regfree(&regex);
+                    return 0;
                 }
                 int bag_len = bags[bag_idx].rm_eo - bags[bag_idx].rm_so;
                 new_repl_len += bag_len;
@@ -75,8 +78,26 @@ int main(int argc, char **argv) {
         }
     }
     new_repl[new_repl_pos] = 0;
-    printf("new_repl: %s\n", new_repl);
 
+    int res_string_len = strlen(string) - (bags[0].rm_eo - bags[0].rm_so) + strlen(new_repl);
+    int res_string_pos = 0;
+    char *res_string = (char *)calloc((res_string_len + 1), sizeof(char));
+    for (int i = 0; i < bags[0].rm_so; ++i) {
+        res_string[res_string_pos] = string[i];
+        ++res_string_pos;
+    }
+    for (int i = 0; i < strlen(new_repl); ++i) {
+        res_string[res_string_pos] = new_repl[i];
+        ++res_string_pos;
+    }
+    for (int i = bags[0].rm_eo; i < strlen(string); ++i) {
+        res_string[res_string_pos] = string[i];
+        ++res_string_pos;
+    }
+
+    printf("%s\n", res_string);
+
+    free(res_string);
     free(new_repl);
     regfree(&regex);
     return 0;
