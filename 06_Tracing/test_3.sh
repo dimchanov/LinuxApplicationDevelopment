@@ -9,5 +9,5 @@ cat move.c > a;
 strace -e trace=openat -e fault=openat:error=ENOENT:when=4 ./move a b 2> /dev/null
 return_value=$?
 printf "Return value: %d\n" $return_value
-test $return_value -eq 3 && printf "   PASSED\n" || printf "   FAILED\n"
+test $return_value -eq 3 && test -f a && !(test -f b) && printf "   PASSED\n" || printf "   FAILED\n"
 rm -f a b

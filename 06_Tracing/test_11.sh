@@ -9,5 +9,5 @@ cat move.c > a;
 strace -e fault=close -e fault=close:error=EINTR:when=1 -P ./a ./move a b 2> /dev/null
 return_value=$?
 printf "Return value: %d\n" $return_value
-test $return_value -eq 11 && printf "   PASSED\n" || printf "   FAILED\n"
+test $return_value -eq 11 && test -f a && !(test -f b) && printf "   PASSED\n" || printf "   FAILED\n"
 rm -f a b
