@@ -7,13 +7,27 @@
 #include <rhash.h>
 
 
+#ifdef READLINE
+#include <readline/readline.h>
+#include <readline/history.h>
+#endif
 
 
 int custom_getline(char **lineptr, size_t *line_len, FILE *stream) {
     int res;
+#ifdef READLINE
+    printf("~ ");
+    *lineptr = readline(NULL);
+    if (!(*lineptr)) {
+        res = -1;
+    } else {
+        res = 0;
+    }
+#else
     printf("> ");
     res = getline(lineptr, line_len, stream);
     (*lineptr)[strlen(*lineptr) - 1] = 0;
+#endif
     if (res == -1) {
         printf("\n");
     }
