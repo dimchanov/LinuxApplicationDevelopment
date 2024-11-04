@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
         }
 
         rhash_print_bytes(
-            output, digest, rhash_get_digest_size(RHASH_TTH),
+            output, digest, rhash_get_digest_size(hash_type),
             islower(hash_name[0]) ? RHPR_BASE64 : RHPR_HEX);
             
         printf("%s\n", output);
