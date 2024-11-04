@@ -26,4 +26,4 @@ echo -n -e "\n" >> a.out
 echo 'SHA1 rhasher.c' | ./rhasher | cut -d ' ' -f 2 > b.out
 cmp a.out b.out
 
-
+rm -f a.out b.out
