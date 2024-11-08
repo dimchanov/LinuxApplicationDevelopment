@@ -1,16 +1,22 @@
+#include <libintl.h>
+#include <locale.h>
 #include <stdio.h>
 #include <string.h>
 
 int main(int argc, char **argv) {
+    setlocale(LC_ALL, "");
+    bindtextdomain("guess_number", ".");
+    textdomain("guess_number");
+
     int left = 1, right = 100;
     int middle;
 
-    printf("Please guess the number from 1 to 100\n");
+    printf(gettext("Please guess the number from 1 to 100\n"));
 
     while (left != right) {
         middle = (left + right) / 2;
         
-        printf("Is your number greater than %d?\n", middle);
+        printf(gettext("Is your number greater than %d?\n"), middle);
 
         char answer[10];
         char is_correct_answer = 0;
@@ -18,18 +24,18 @@ int main(int argc, char **argv) {
             is_correct_answer = 1;
             scanf("%s", answer);
             
-            if (!strcasecmp(answer, "yes") || !strcasecmp(answer, "y")) {
+            if (!strcasecmp(answer, gettext("yes")) || !strcasecmp(answer, gettext("y"))) {
                 left = middle + 1;
-            } else if (!strcasecmp(answer, "no") || !strcasecmp(answer, "n")) {
+            } else if (!strcasecmp(answer, gettext("no")) || !strcasecmp(answer, gettext("n"))) {
                 right = middle;
             } else {
-                printf("Just answer the question yes or no, please\n");
+                printf(gettext("Just answer the question yes or no, please\n"));
                 is_correct_answer = 0;
             }
         }
     }
 
-    printf("Your number is %d\n", left);
+    printf(gettext("Your number is %d\n"), left);
 
     return 0;
 }
