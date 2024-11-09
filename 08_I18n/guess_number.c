@@ -18,9 +18,9 @@ int main(int argc, char **argv) {
             is_correct_answer = 1;
             scanf("%s", answer);
             
-            if (!strcasecmp(answer, "yes")) {
+            if (!strcasecmp(answer, "yes") || !strcasecmp(answer, "y")) {
                 left = middle + 1;
-            } else if (!strcasecmp(answer, "no")) {
+            } else if (!strcasecmp(answer, "no") || !strcasecmp(answer, "n")) {
                 right = middle;
             } else {
                 printf("Just answer the question yes or no, please\n");
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf("Your number is %d!\n", left);
+    printf("Your number is %d\n", left);
 
     return 0;
 }
