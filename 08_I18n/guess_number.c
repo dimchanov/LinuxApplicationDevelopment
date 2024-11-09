@@ -5,6 +5,8 @@ int main(int argc, char **argv) {
     int left = 1, right = 100;
     int middle;
 
+    printf("Please guess the number from 1 to 100\n");
+
     while (left != right) {
         middle = (left + right) / 2;
         
