@@ -21,8 +21,7 @@ int main(int argc, char **argv) {
         char answer[10];
         char is_correct_answer = 0;
         while (!is_correct_answer) {
-            is_correct_answer = 1;
-            scanf("%s", answer);
+            is_correct_answer = scanf("%s", answer);
             
             if (!strcasecmp(answer, gettext("yes")) || !strcasecmp(answer, gettext("y"))) {
                 left = middle + 1;
