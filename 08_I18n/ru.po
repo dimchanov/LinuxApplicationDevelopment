@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  08_I18n\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-10 17:58+0300\n"
+"POT-Creation-Date: 2024-11-10 20:22+0300\n"
 "PO-Revision-Date: 2024-11-10 18:01+0300\n"
 "Last-Translator:  <dnovikov@dnovikov>\n"
 "Language-Team: Russian\n"
@@ -28,28 +28,28 @@ msgstr "Пожалуйста, загадайте число от 1 до 100\n"
 msgid "Is your number greater than %d?\n"
 msgstr "Ваше число больше, чем %d?\n"
 
-#: guess_number.c:27
+#: guess_number.c:26
 msgid "yes"
 msgstr "да"
 
-#: guess_number.c:27
+#: guess_number.c:26
 msgid "y"
 msgstr "д"
 
-#: guess_number.c:29
+#: guess_number.c:28
 msgid "no"
 msgstr "нет"
 
-#: guess_number.c:29
+#: guess_number.c:28
 msgid "n"
 msgstr "н"
 
-#: guess_number.c:32
+#: guess_number.c:31
 #, c-format
 msgid "Just answer the question yes or no, please\n"
 msgstr "Пожалуйста, отвечайте на вопрос да или нет\n"
 
-#: guess_number.c:38
+#: guess_number.c:37
 #, c-format
 msgid "Your number is %d\n"
 msgstr "Ваше число %d\n"
