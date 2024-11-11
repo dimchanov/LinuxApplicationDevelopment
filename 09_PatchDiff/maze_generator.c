@@ -27,6 +27,16 @@ double p() {
 // }
 
 
+void get_impassable_maze(char *maze, int size) {
+    int offset = size * 2 + 1;
+    for (int i = 1; i < offset; i += 2) {
+        for (int j = 1; j < offset; j += 2) {
+            maze[i * offset + j] = 1;
+        }
+    }
+}
+
+
 void show_maze(char *maze, int size, char wall, char passage) {
     int offset = size * 2 + 1;
     for (int i = 0; i < offset; ++i) {
@@ -46,11 +56,7 @@ int main(int argc, char **argv) {
     int offset = size * 2 + 1;
     char *maze = (char *)calloc(offset * offset, sizeof(char));
 
-    for (int i = 1; i < offset; i += 2) {
-        for (int j = 1; j < offset; j += 2) {
-            maze[i * offset + j] = 1;
-        }
-    }
+    get_impassable_maze(maze, size);
 
     show_maze(maze, size, wall, passage);
     
