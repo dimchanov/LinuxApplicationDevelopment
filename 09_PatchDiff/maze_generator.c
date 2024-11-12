@@ -21,25 +21,24 @@ void set_passage(char *maze, int size, int i, int j) {
     int offset = size * 2 + 1;
     for (int i = 1; i < offset; i += 2) {
         for (int j = 1; j < offset; j += 2) {
+            if (maze[i * offset + j] > 1) {
+                continue;
+            }
             // up
-            if (p() > 0.5 && i - 2 > 0 && maze[(i - 2) * offset + j] != 1) {
+            if (p() > 0.5 && i - 2 > 0) {
                 maze[(i - 1) * offset + j] = 1;
-                set_passage(maze, size, i - 2, j);
             }
             // right
-            if (p() > 0.5 && j + 2 < offset && maze[i * offset + j + 2] != 1) {
+            if (p() > 0.5 && j + 2 < offset) {
                 maze[i * offset + j + 1] = 1;
-                set_passage(maze, size, i, j + 2);
             }
             // down
-            if (p() > 0.5 && i + 2 < offset && maze[(i + 2) * offset + j] != 1) {
+            if (p() > 0.5 && i + 2 < offset) {
                 maze[(i + 1) * offset + j] = 1;
-                set_passage(maze, size, i + 2, j);
             }
             // left
-            if (p() > 0.5 && j - 2 < offset && maze[i * offset + j - 2] != 1) {
+            if (p() > 0.5 && j - 2 > 0) {
                 maze[i * offset + j - 1] = 1;
-                set_passage(maze, size, i, j - 2);
             }
         }
     }
