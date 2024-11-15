@@ -1,5 +1,5 @@
---- maze_generator.c	2024-11-15 17:40:19.367707100 +0300
-+++ maze_v1.c	2024-11-15 17:40:03.491153800 +0300
+--- maze_generator.c	2024-11-15 18:01:17.402890800 +0300
++++ maze_v2.c	2024-11-15 18:02:11.070913400 +0300
 @@ -1,5 +1,6 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -16,7 +16,7 @@
 -    char passage = '.';
 +    if(argc < 3) {
 +		fprintf(stderr, "Usage: %s <passage, wall> <maze size>\n", argv[0]);
-+		return 1;
++	    return 1;
 +    }
 +
 +    if (strlen(argv[1]) < 2) {
@@ -29,7 +29,7 @@
 +    int size = 0;
 +    size = atoi(argv[2]);
 +	if (size < 1) {
-+		fprintf(stderr, "Maze size must be greater than zero\n");
++	    fprintf(stderr, "Maze size must be greater than zero\n");
 +		return 3;
 +	}
  
