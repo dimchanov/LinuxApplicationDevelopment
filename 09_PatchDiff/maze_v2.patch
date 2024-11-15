@@ -1,0 +1,37 @@
+--- maze_generator.c	2024-11-15 17:40:19.367707100 +0300
++++ maze_v1.c	2024-11-15 17:40:03.491153800 +0300
+@@ -1,5 +1,6 @@
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
+ 
+ 
+ void show_maze(char *maze, int size, char wall, char passage) {
+@@ -57,9 +58,24 @@
+ 
+ 
+ int main(int argc, char **argv) {
+-    int size = 6;
+-    char wall = '#';
+-    char passage = '.';
++    if(argc < 3) {
++		fprintf(stderr, "Usage: %s <passage, wall> <maze size>\n", argv[0]);
++		return 1;
++    }
++
++    if (strlen(argv[1]) < 2) {
++        fprintf(stderr, "Must be string of two characters, 'passage' and 'wall' of maze\n");
++		return 2;
++    }
++    char passage = argv[1][0];
++    char wall = argv[1][1];
++
++    int size = 0;
++    size = atoi(argv[2]);
++	if (size < 1) {
++		fprintf(stderr, "Maze size must be greater than zero\n");
++		return 3;
++	}
+ 
+     int offset = size * 2 + 1;
+     char *maze = (char *)calloc(offset * offset, sizeof(char));
