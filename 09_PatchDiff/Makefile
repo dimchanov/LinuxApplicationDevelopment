@@ -17,7 +17,14 @@ maze_v%: maze_generator.c
 test: clean all
 	# 0
 	./maze
-	
+	# 1
+	./maze_v1 8
+	# 2
+	./maze_v2 ' @' 5
+	# 3
+	./maze_v3 12 '.#' 4
+	./maze_v3 11 '.#' 4
+	./maze_v3 12 '.#' 4
 
 clean: genclean
 	rm -f $(TRASH)
