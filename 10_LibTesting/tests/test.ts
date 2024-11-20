@@ -24,14 +24,14 @@
 
 #test buf_push
 	long *ai = 0;
-    	for (int i = 0; i < 10000; i++)
-        	buf_push(ai, i);
-	ck_assert_msg(buf_size(ai) == 10000, "size 10000");
-	int match = 0;
-    	for (int i = 0; i < (int)(buf_size(ai)); i++)
-        	match += ai[i] == i;
-	ck_assert_msg(match == 10000, "match 10000");
-	buf_free(ai);
+    for (int i = 0; i < 10000; i++)
+        buf_push(ai, i);
+    ck_assert_msg(buf_size(ai) == 10000, "size 10000");
+    int match = 0;
+    for (int i = 0; i < (int)(buf_size(ai)); i++)
+        match += ai[i] == i;
+    ck_assert_msg(match == 10000, "match 10000");
+    buf_free(ai);
 
 
 #test buf_grow
@@ -47,9 +47,9 @@
 #test buf_pop
 	float *a = 0;
 	buf_push(a, 1.1);
-    	buf_push(a, 1.2);
-    	buf_push(a, 1.3);
-    	buf_push(a, 1.4);
+    buf_push(a, 1.2);
+    buf_push(a, 1.3);
+    buf_push(a, 1.4);
 	ck_assert_msg(buf_size(a) == 4, "size 4");
 	ck_assert_msg(buf_pop(a) == (float)1.4f, "pop 3");
 	buf_trunc(a, 3);
