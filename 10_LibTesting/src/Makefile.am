@@ -6,9 +6,9 @@ CFLAGS  += -O3 -g3
 endif
 
 lib_LTLIBRARIES = libbuf.la
-buf_LDADD = libbuf.la
 
 libbuf.c: buf.h
 
 gcov:
 	gcov -o .libs libbuf -t -k -b | egrep -v '[[:digit:]]:[ /][*]'
+
