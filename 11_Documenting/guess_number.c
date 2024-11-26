@@ -18,6 +18,11 @@ char* roman_numbers[100] = {
 }
 
 
+char* arabic2roman(int number) {
+    return roman_numbers[number-1];
+}
+
+
 int main(int argc, char **argv) {
     setlocale(LC_ALL, "");
     bindtextdomain("guess_number", ".");
