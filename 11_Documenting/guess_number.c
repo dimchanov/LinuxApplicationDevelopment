@@ -23,6 +23,16 @@ char* arabic2roman(int number) {
 }
 
 
+int roman2arabic(char *roman) {
+    for (int arabic = 0; arabic < 100; ++arabic) {
+        if (!strcmp(roman, roman_numbers[arabic])) {
+            return arabic + 1;
+        }
+    }
+    return -1;
+}
+
+
 int main(int argc, char **argv) {
     setlocale(LC_ALL, "");
     bindtextdomain("guess_number", ".");
