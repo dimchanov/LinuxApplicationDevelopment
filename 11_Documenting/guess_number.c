@@ -33,6 +33,13 @@ int roman2arabic(char *roman) {
 }
 
 
+char* number2string(int number) {
+    char str_number[4] = {0};
+    itoa(number, str_number, 10);
+    return str_number;
+}
+
+
 int main(int argc, char **argv) {
     setlocale(LC_ALL, "");
     bindtextdomain("guess_number", ".");
