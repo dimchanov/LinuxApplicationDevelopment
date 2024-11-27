@@ -4,6 +4,7 @@
 #include <string.h>
 
 
+static char str_number[4] = {0};
 char* roman_numbers[100] = {
     "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
     "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
@@ -15,7 +16,7 @@ char* roman_numbers[100] = {
     "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX",
     "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
     "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"
-}
+};
 
 
 char* arabic2roman(int number) {
@@ -34,8 +35,7 @@ int roman2arabic(char *roman) {
 
 
 char* number2string(int number) {
-    char str_number[4] = {0};
-    itoa(number, str_number, 10);
+    sprintf(str_number, "%d", number);
     return str_number;
 }
 
@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
     bindtextdomain("guess_number", ".");
     textdomain("guess_number");
 
+    char*(*post_handler)(int) = &number2string;
     int left = 1, right = 100;
     int middle;
 
@@ -71,7 +72,7 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf(gettext("Your number is %d\n"), left);
+    printf(gettext("Your number is %s\n"), post_handler(left));
 
     return 0;
 }
