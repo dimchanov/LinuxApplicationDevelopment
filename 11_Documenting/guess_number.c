@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-static char str_number[4] = {0};
+char str_number[4] = {0};
 char* roman_numbers[100] = {
     "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
     "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
@@ -46,15 +46,26 @@ int main(int argc, char **argv) {
     textdomain("guess_number");
 
     char*(*post_handler)(int) = &number2string;
+
+    if (argc > 1) {
+        if (!strcmp(argv[1], "-r")) {
+            printf("Roman numerals are used\n");
+            post_handler = &arabic2roman;
+        } else {
+            printf("Unknown command line argument\n");
+        }
+    }
+
     int left = 1, right = 100;
     int middle;
 
-    printf(gettext("Please guess the number from 1 to 100\n"));
+    printf(gettext("Please guess the number from %s "), post_handler(1));
+    printf(gettext("to %s\n"), post_handler(100));
 
     while (left != right) {
         middle = (left + right) / 2;
         
-        printf(gettext("Is your number greater than %d?\n"), middle);
+        printf(gettext("Is your number greater than %s?\n"), post_handler(middle));
 
         char answer[10];
         char is_correct_answer = 0;
