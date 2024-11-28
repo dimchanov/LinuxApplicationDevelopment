@@ -48,7 +48,13 @@ int main(int argc, char **argv) {
     char*(*post_handler)(int) = &number2string;
 
     if (argc > 1) {
-        if (!strcmp(argv[1], "-r")) {
+        if (!strcmp(argv[1], "-h") || !strcmp(argv[1], "--help")) {
+            printf("A rather stupid C program that guesses the number\n");
+            printf("Args usage:\n");
+            printf("-h, --help\n\tPrints the usage for the executable and exits.\n");
+            printf("-r\n\tEnables roman numbers.\n");
+            return 0;
+        } else if (!strcmp(argv[1], "-r")) {
             printf("Roman numerals are used\n");
             post_handler = &arabic2roman;
         } else {
