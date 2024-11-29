@@ -18,38 +18,85 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: guess_number.c:14
-#, c-format
-msgid "Please guess the number from 1 to 100\n"
-msgstr "Пожалуйста, загадайте число от 1 до 100\n"
+#: guess_number.c:51
+msgid "-h"
+msgstr "-п"
 
-#: guess_number.c:19
-#, c-format
-msgid "Is your number greater than %d?\n"
-msgstr "Ваше число больше, чем %d?\n"
+#: guess_number.c:51
+msgid "--help"
+msgstr "--помощь"
 
-#: guess_number.c:26
+#: guess_number.c:52
+#, c-format
+msgid "A rather stupid C program that guesses the number\n"
+msgstr "Довольно глупая программа на Си, которая угадывает число\n"
+
+#: guess_number.c:53
+#, c-format
+msgid "Args usage:\n"
+msgstr "Использование аргументов:\n"
+
+#: guess_number.c:54
+#, c-format
+msgid "-h, --help\n\tPrints the usage for the executable and exits.\n"
+msgstr "-п, --помощь\n\tВыводит данные об использовании исполняемого файла и завершает работу.\n"
+
+#: guess_number.c:55
+#, c-format
+msgid "-r\n\tEnables roman numbers.\n"
+msgstr "-р\n\tВключает римские цифры.\n"
+
+#: guess_number.c:57
+msgid "-r"
+msgstr "-р"
+
+#: guess_number.c:58
+#, c-format
+msgid "Roman numerals are used\n"
+msgstr "Используются римские цифры\n"
+
+#: guess_number.c:61
+#, c-format
+msgid "Unknown command line argument\n"
+msgstr "Неизвестный аргумент командной строки\n"
+
+#: guess_number.c:68
+#, c-format
+msgid "Please guess the number from %s "
+msgstr "Пожалуйста, угадайте число от %s "
+
+#: guess_number.c:69
+#, c-format
+msgid "to %s\n"
+msgstr "до %s\n"
+
+#: guess_number.c:74
+#, c-format
+msgid "Is your number greater than %s?\n"
+msgstr "Ваш номер больше, чем %s?\n"
+
+#: guess_number.c:81
 msgid "yes"
 msgstr "да"
 
-#: guess_number.c:26
+#: guess_number.c:81
 msgid "y"
 msgstr "д"
 
-#: guess_number.c:28
+#: guess_number.c:83
 msgid "no"
 msgstr "нет"
 
-#: guess_number.c:28
+#: guess_number.c:83
 msgid "n"
 msgstr "н"
 
-#: guess_number.c:31
+#: guess_number.c:86
 #, c-format
 msgid "Just answer the question yes or no, please\n"
 msgstr "Пожалуйста, отвечайте на вопрос да или нет\n"
 
-#: guess_number.c:37
+#: guess_number.c:92
 #, c-format
-msgid "Your number is %d\n"
-msgstr "Ваше число %d\n"
+msgid "Your number is %s\n"
+msgstr "Ваше число %s\n"
