@@ -1,3 +1,14 @@
+/** @page guess_number
+ * The program that guesses the number from 1 to 100 
+ * @section SYNOPSIS
+ * `guess_number` [\a options]
+ * @section DESCRIPTION
+ * The program guesses a number from 1 to 100. It is possible to use Roman numbers (see OPTIONS).
+ * @section OPTIONS
+ * -h, --help - Prints the usage for the executable and exits.
+ * 
+ * -r - Enables roman numbers.
+ */
 #include <libintl.h>
 #include <locale.h>
 #include <stdio.h>
