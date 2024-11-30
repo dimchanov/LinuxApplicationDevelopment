@@ -1,3 +1,6 @@
+/** @mainpage
+ * The program that guesses the number from 1 to 100 
+ */
 /** @page guess_number
  * The program that guesses the number from 1 to 100 
  * @section SYNOPSIS
