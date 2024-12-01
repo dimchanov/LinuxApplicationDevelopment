@@ -3,6 +3,10 @@ AM_CFLAGS = -Wall
 
 all-local: doxygen-clean doxygen-doc
 
+doxygen-doc/man/man1/guess_number.1: doxygen-doc
+
+man1_MANS = doxygen-doc/man/man1/guess_number.1
+
 doxygen-clean:
 	rm -rf doxygen-doc
 
