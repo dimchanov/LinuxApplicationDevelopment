@@ -5,7 +5,7 @@ AC_PREREQ([2.69])
 AC_INIT([11_Documenting], [1.0.0], [gse], [Guess_number])
 AM_INIT_AUTOMAKE([foreign])
 DX_INIT_DOXYGEN([guess_number])
-AC_CONFIG_SRCDIR([guess_number.c])
+AC_CONFIG_SRCDIR([src/guess_number.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -23,6 +23,7 @@ AC_CHECK_FUNCS([setlocale strcasecmp])
 
 AC_CONFIG_FILES([
     Makefile
+    src/Makefile
     Doxyfile
 ])
 AC_OUTPUT
