@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([11_Documenting], [1.0.0], [gse], [Guess_number])
+AC_INIT([12_InstallPackaging], [1.0.0], [gse], [Guess_number])
 AM_INIT_AUTOMAKE([foreign])
 DX_INIT_DOXYGEN([guess_number])
 AC_CONFIG_SRCDIR([src/guess_number.c])

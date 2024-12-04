@@ -18,5 +18,5 @@ translate.pot: guess_number.pot guess_number.c
 	msgmerge -U $@ translate.new.pot
 
 gitclean:
-	git clean -df
+	git clean -xdf
 	rm -f *.o *~ o.*
