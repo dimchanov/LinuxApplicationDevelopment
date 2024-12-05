@@ -1,9 +1,12 @@
 AM_CFLAGS = -Wall
 
-bin_PROGRAMS=guess_number
+bin_PROGRAMS=main tests
 
 pkgdata_DATA = ./ru/LC_MESSAGES/guess_number.mo
 
+main_SOURCES = main.c guess_number.c
+
+tests_SOURCES = tests.c guess_number.c
 
 ru/LC_MESSAGES/guess_number.mo: ru.po
 	mkdir -p `dirname $@`

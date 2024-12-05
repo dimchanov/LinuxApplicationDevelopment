@@ -18,3 +18,7 @@ install-data-local:
 
 http: doxygen-doc
 	python3 -m http.server --directory $</html 5000
+
+gitclean:
+	git clean -xdf
+	rm -f *.o *~ o.*
