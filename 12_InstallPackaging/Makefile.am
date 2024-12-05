@@ -22,3 +22,9 @@ http: doxygen-doc
 gitclean:
 	git clean -xdf
 	rm -f *.o *~ o.*
+
+test:
+	./src/tests
+
+install:
+	./scripts/install.sh
