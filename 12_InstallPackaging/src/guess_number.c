@@ -1,6 +1,9 @@
-#include <libintl.h>
 #include <locale.h>
+#include <libintl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <libgen.h>
 #include <string.h>
 
 #include "guess_number.h"
@@ -44,7 +47,16 @@ char* number2string(int number) {
 
 int start_guessing(int argc, char **argv) {
     setlocale(LC_ALL, "");
-    bindtextdomain("guess_number", ".");
+    char exe_path[1024];
+    ssize_t len = readlink("/proc/self/exe", exe_path, sizeof(exe_path) - 1);
+    if (len == -1) {
+        perror("readlink");
+        return 1;
+    }
+    exe_path[len] = '\0';
+    char *exe_dir = dirname(exe_path);
+    printf("%s\n", exe_dir);
+    bindtextdomain("guess_number", exe_dir);
     textdomain("guess_number");
 
     char*(*post_handler)(int) = &number2string;
