@@ -1,8 +1,3 @@
-if ! $(sudo -l &> /dev/null); then
-    echo "Error: root privileges are needed to run this script"
-    exit $E_NOTROOT
-fi
-
 TARGET_DIR="/usr/local"
 
 mkdir -p $TARGET_DIR
