@@ -55,7 +55,6 @@ int start_guessing(int argc, char **argv) {
     }
     exe_path[len] = '\0';
     char *exe_dir = dirname(exe_path);
-    printf("%s\n", exe_dir);
     bindtextdomain("guess_number", exe_dir);
     textdomain("guess_number");
 
