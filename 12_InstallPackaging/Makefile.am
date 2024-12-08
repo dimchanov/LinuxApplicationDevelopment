@@ -27,4 +27,7 @@ test:
 	./src/tests
 
 install:
-	./scripts/install.sh
+	sudo ./scripts/install.sh
+
+uninstall:
+	sudo ./scripts/uninstall.sh

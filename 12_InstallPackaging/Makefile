@@ -10,3 +10,6 @@ test: build
 
 install: build
 	sudo ./scripts/install.sh
+
+uninstall:
+	sudo ./scripts/uninstall.sh
